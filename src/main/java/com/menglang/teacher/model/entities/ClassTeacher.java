@@ -1,10 +1,9 @@
 package com.menglang.teacher.model.entities;
 
 
-import jakarta.persistence.Embeddable;
+import com.menglang.teacher.model.audit.AuditEntity;
 
-
-public class ClassTeacher  {
+public class ClassTeacher  extends AuditEntity<Long> {
 
 
 }

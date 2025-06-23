@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "teacher",indexes = {@Index(name = "idx_student_name", columnList = "firstName,lastName")})
+@Table(name = "teacher",indexes = {@Index(name = "idx_teacher_name", columnList = "firstName,lastName")})
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,7 +32,7 @@ public class Teacher extends AuditEntity<Long> {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @Column(name = "phone_number",unique = true)
+    @Column(name = "phone_number",unique = true,length = 20)
     private String phoneNumber;
 
     @Column(name = "address")
