@@ -9,4 +9,5 @@ public interface BaseService<T extends Serializable,R extends Serializable> {
     R delete(Long id) ;
     Optional<R> getById(Long id);
 
+
 }

@@ -7,6 +7,8 @@ import com.menglang.teacher.model.entities.Teacher;
 import com.menglang.teacher.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -55,5 +57,10 @@ public class TeacherServiceImpl implements TeacherService{
 
     private Teacher findTeacherById(Long id){
         return teacherRepository.findById(id).orElseThrow(()->new RuntimeException(" Teacher not found."));
+    }
+
+    @Override
+    public List<Teacher> getAll() {
+        return teacherRepository.findAll();
     }
 }
