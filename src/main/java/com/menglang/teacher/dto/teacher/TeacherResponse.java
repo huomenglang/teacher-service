@@ -1,28 +1,26 @@
 package com.menglang.teacher.dto.teacher;
-
+import com.menglang.common.library.page.paginate.BasePageResponse;
 import com.menglang.teacher.model.enums.Gender;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public record TeacherResponse(
-        Long id,
-        String firstName,
-        String lastName,
-        Gender gender,
-        LocalDate birthDate,
-        String imageUrl,
-        String phoneNumber,
-        String address,
-        LocalDate startedDate,
-        Double salary,
-        LocalDateTime createdAt,
-        String createdBy,
-        LocalDateTime updatedAt,
-        String updatedBy
-) implements Serializable {
+@Getter
+@AllArgsConstructor
+public class TeacherResponse extends BasePageResponse {
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private Gender gender;
+    private LocalDate birthDate;
+    private String imageUrl;
+    private String phoneNumber;
+    private String address;
+    private LocalDate startedDate;
+    private Double salary;
+    private LocalDateTime createdAt;
+    private String createdBy;
+    private LocalDateTime updatedAt;
+    private String updatedBy;
 }

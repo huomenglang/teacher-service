@@ -1,14 +1,22 @@
 package com.menglang.teacher.service.teacher;
 
+import com.menglang.common.library.page.filter.FilterBy;
+import com.menglang.common.library.page.parser.BaseSpecification;
+import com.menglang.common.library.page.parser.PageableParser;
+import com.menglang.common.library.page.parser.QueryParamParser;
 import com.menglang.teacher.dto.teacher.TeacherMapper;
 import com.menglang.teacher.dto.teacher.TeacherRequest;
 import com.menglang.teacher.dto.teacher.TeacherResponse;
 import com.menglang.teacher.model.entities.Teacher;
 import com.menglang.teacher.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -59,8 +67,12 @@ public class TeacherServiceImpl implements TeacherService{
         return teacherRepository.findById(id).orElseThrow(()->new RuntimeException(" Teacher not found."));
     }
 
+
     @Override
-    public List<Teacher> getAll() {
-        return teacherRepository.findAll();
+    public Page<Teacher> getAll(Map<String, String> params) {
+        Pageable pageable= PageableParser.from(params);
+        List<FilterBy> filters= QueryParamParser.parse(params);
+        Specification<Teacher> spec= new BaseSpecification<>(filters);
+        return teacherRepository.findAll(spec,pageable);
     }
 }
