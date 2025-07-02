@@ -9,6 +9,8 @@ import com.menglang.teacher.model.entities.Teacher;
 import com.menglang.teacher.service.teacher.TeacherService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +24,13 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TeacherController {
 
+    private static final Logger log = LoggerFactory.getLogger(TeacherController.class);
     private final TeacherService teacherService;
     private final TeacherMapper teacherMapper;
 
     @PostMapping
     public ResponseEntity<PageResponse> create(@Valid @RequestBody TeacherRequest data){
+        log.info("data input{}",data.firstName());
         return PageResponseHandler.success(teacherService.create(data),null,"Create Successful");
     }
 

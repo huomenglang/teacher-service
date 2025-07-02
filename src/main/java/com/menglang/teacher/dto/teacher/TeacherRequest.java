@@ -12,13 +12,11 @@ import java.time.LocalDate;
 public record TeacherRequest(
 
         @NotNull(message = "First Name is Require!")
-        @NotBlank(message = "First Name must not be Blank!")
         @Size(message = "First Name at lease has 3 Character and Maximum 30 characters",min = 3,max = 30)
         String firstName,
 
         @NotNull(message = "Last Name is Require!")
-        @NotBlank(message = "Last Name must not be Blank!")
-        @Size(message = "Lasst Name at lease has 3 Character and Maximum 30 characters")
+        @Size(message = "Last Name at lease has 3 Character and Maximum 30 characters")
         String lastName,
 
         @NotNull(message = "Gender is Require!")
@@ -32,12 +30,10 @@ public record TeacherRequest(
         String imageUrl,
 
         @NotNull(message = "Phone Number is Require!")
-        @NotBlank(message = "Phone Number must not be Blank!")
         @Size(message = "First Name at lease has 9 Character and Maximum 20 characters",min = 3,max = 20)
         String phoneNumber,
 
         @NotNull(message = "Address is Require!")
-        @NotBlank(message = "Address must not be Blank!")
         String address,
 
         @NotNull(message = "Start Date is Require!")
